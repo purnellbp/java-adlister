@@ -7,22 +7,23 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    if(request.getMethod().equalsIgnoreCase("post")){
-        String user = request.getParameter("user");
-        String pass - request.getParameter("pass");
-    }
-    if(user.equals("admin") && pass.equals("password")){
-        response.sendRedirect("profile.jsp");
-    }
-%>
+<c:choose>
+    <c:when test="${param.user == 'admin' && param.pass == 'password}'}">
+        <c:redirect url="./profile.jsp">
+            <c:param name="user" value="${param.user}"></c:param>
+            <c:param name="pass" value="${param.pass}"></c:param>
+        </c:redirect>
+
+    </c:when>
+</c:choose>
+
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
 
-<form name="loginForm" method="post" action="login.jsp">
+<form name="loginForm" method="post" action="./login.jsp">
     <table width="20%" bgcolor="0099CC" align="center">
         <tr>
             <td colspan=2><b>Login</b></td>

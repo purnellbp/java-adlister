@@ -11,6 +11,6 @@
     <title>Admin Page</title>
 </head>
 <body>
-
+<h1>Hello ${param.user}</h1>
 </body>
 </html>
